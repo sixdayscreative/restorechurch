@@ -1,0 +1,214 @@
+@font-face {
+    font-family: 'silver_south_script_altRg';
+    src: url('../fonts/silver_south_script_alt-webfont.woff2') format('woff2'),
+         url('../fonts/silver_south_script_alt-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Bariol';
+    src: url('../fonts/bariol_regular-webfont.eot');
+    src: url('../fonts/bariol_regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/bariol_regular-webfont.woff2') format('woff2'),
+         url('../fonts/bariol_regular-webfont.woff') format('woff'),
+         url('../fonts/bariol_regular-webfont.ttf') format('truetype'),
+         url('../fonts/bariol_regular-webfont.svg#bariolregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Bariol';
+    src: url('../fonts/bariol_regular_italic-webfont.eot');
+    src: url('../fonts/bariol_regular_italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/bariol_regular_italic-webfont.woff2') format('woff2'),
+         url('../fonts/bariol_regular_italic-webfont.woff') format('woff'),
+         url('../fonts/bariol_regular_italic-webfont.ttf') format('truetype'),
+         url('../fonts/bariol_regular_italic-webfont.svg#bariolregular') format('svg');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Bariol';
+    src: url('../fonts/bariol_bold-webfont.eot');
+    src: url('../fonts/bariol_bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/bariol_bold-webfont.woff2') format('woff2'),
+         url('../fonts/bariol_bold-webfont.woff') format('woff'),
+         url('../fonts/bariol_bold-webfont.ttf') format('truetype'),
+         url('../fonts/bariol_bold-webfont.svg#bariolregular') format('svg');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@mixin body_spacing{
+  letter-spacing: 0.035em;
+}
+
+body{
+  font-family: $font_body;
+  font-size: rem(16px);
+  @include body_spacing;
+}
+
+h1{
+  font-size: rem(44px);
+  font-family: $font_heading;
+  margin-bottom: 0.5em;
+  &.jumbo{
+    font-size: rem(56px);
+  }
+  @include min-md{
+    font-size: rem(70px);
+    &.jumbo{
+      font-size: rem(100px);
+    }
+  }
+}
+h2{
+  font-size: rem(24px);
+  margin-bottom: 0.75em;
+  @include uppercasetitle;
+}
+h3{
+  @extend h2;
+  font-size: rem(20px);
+}
+h4{
+  @extend h2;
+}
+h5{
+  font-size: rem(18px);
+  color: $color_highlight;
+  font-weight: bold;
+  margin-bottom: rem(8px);
+}
+h6{
+  @include uppercasetitle;
+  margin-bottom: 0.4em;
+  font-size: rem(16px);
+}
+
+em{
+  font-style: italic;
+}
+strong{
+  font-weight: bold;
+}
+small{
+  font-size: 0.75em;
+}
+sup{
+  vertical-align: super;
+  font-size: 0.65em;
+}
+p{
+  line-height: 1.611;
+  margin-bottom: 1.15em;
+  font-size: rem(16px);
+  @include body_spacing;
+  &.lead{
+    line-height: 1.611;
+    font-size: rem(18px);
+    @media (min-width: 1600px){
+      font-size: rem(24px);
+    }
+  }
+}
+a{
+  color: currentColor;
+  text-decoration: none;
+}
+.logo {
+  white-space: nowrap;
+  font-family: $font_heading;
+  svg{
+    height: 0.714em;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: -0.35em;
+  }
+  &.white{
+    color: #fff;
+    .logo-text{
+      fill: #000;
+    }
+    .logo-bg{
+      fill: #fff;
+    }
+  }
+}
+.page-title{
+  font-size: 1.75em;
+  display: block;
+  text-align: center;
+  margin-bottom: 1.15em;
+}
+.tab-title{
+  color: #fff;
+  background-color: $color_highlight;
+  display: inline-block;
+  margin-bottom: 0;
+  padding: 0.5em 1.75em;
+  border-radius: 6px 6px 0 0;
+  @include xs-only{
+    font-size: rem(20px);
+  }
+}
+
+.title{
+  font-family: $font_heading;
+  font-size: rem(44px);
+  text-transform: none;
+  font-weight: normal;
+  letter-spacing: normal;
+  margin-bottom: 0;
+}
+
+$icon_size: rem(30px);
+.svg-icon{
+  width: $icon_size;
+  height: $icon_size;
+  vertical-align: middle;
+  display: inline-block;
+  line-height: 1;
+  margin-top: -.175em;
+  &.icon-before{
+    margin-right: 1em;
+  }
+  &.icon-after{
+    margin-left: 1em;
+  }
+}
+
+.icon-absolute-left{
+  @include icon-left;
+  padding-left: 2.75em !important;
+}
+
+.icon-2x{
+  width: $icon_size*2;
+  height: $icon_size*2;
+}
+
+.text-light{
+  color: #fff;
+}
+
+.fz-xl{
+  font-size: 1.417em;
+  @include body_spacing;
+}
+.fz-l{
+  font-size: 1.25em;
+  @include body_spacing;
+}
+.fz-s{
+  font-size: 0.8em;
+  @include body_spacing;
+}
+.fz-xs{
+  font-size: 0.65em;
+  @include body_spacing;
+}

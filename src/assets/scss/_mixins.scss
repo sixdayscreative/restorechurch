@@ -1,0 +1,181 @@
+/* =======================================================================
+## ++ Media Queries
+========================================================================== */
+
+/*
+    Used for media queries.
+    Add these mixins in your normal scss flow.
+
+    Eg.
+    .container{
+        width:1024px;
+
+        @include tablets{
+            width:90%;
+        }
+    }
+*/
+
+$s-width: 600px;
+$sm-width: 768px;
+$md-width: 1192px;
+$lg-width: 1440px;
+
+@mixin xs-only {
+  @media (max-width: #{$s-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin s-only {
+  @media (min-width: #{$s-width}) and (max-width: #{$sm-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin sm-only {
+  @media (min-width: #{$sm-width}) and (max-width: #{$md-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin md-only {
+  @media (min-width: #{$md-width}) and (max-width: #{$lg-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin max-s {
+  @media (max-width: #{$sm-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin max-sm {
+  @media (max-width: #{$md-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin max-md {
+  @media (max-width: #{$lg-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin min-s {
+  @media (min-width: #{$s-width}) {
+    @content;
+  }
+}
+
+@mixin min-sm {
+  @media (min-width: #{$sm-width}) {
+    @content;
+  }
+}
+
+@mixin min-md {
+  @media (min-width: #{$md-width}) {
+    @content;
+  }
+}
+
+@mixin min-lg {
+  @media (min-width: #{$lg-width}) {
+    @content;
+  }
+}
+
+/* =======================================================================
+## ++ Unit transform
+========================================================================== */
+
+/*
+    Used for making containers have width in percentages.
+    Usage: define elemnt width in px and the width of parent elemnt in px.
+    eg. .block{width:cp(512px, 1024px)} this will result in .block{width:50%;}
+*/
+
+@function cp($target, $container) {
+    @return ($target / $container) * 100%;
+}
+
+/*
+    Used for making px values convert to rem values
+    Usage: define font-size in px and it will convert to rems
+    eg. font-size: rem(14px);
+*/
+
+@function rem($target, $context: $base-font-size) {
+   @if $target == 0 { @return 0 }
+   @return $target / $context + 0rem;
+}
+$base-font-size:16px;
+
+@mixin uppercasetitle($weight: bold){
+  text-transform: uppercase;
+  font-weight: $weight;
+  letter-spacing: 0.08em;
+}
+
+
+
+
+@mixin gradient{
+  background: #7783db; /* Old browsers */
+  background: -moz-radial-gradient(center, ellipse cover, #7783db 0%, #b8689e 65%, #eb5d44 100%); /* FF3.6-15 */
+  background: -webkit-radial-gradient(center, ellipse cover, #7783db 0%,#b8689e 65%,#eb5d44 100%); /* Chrome10-25,Safari5.1-6 */
+  background: radial-gradient(ellipse at center, #7783db 0%,#b8689e 65%,#eb5d44 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7783db', endColorstr='#eb5d44',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  background-size: 100% 200%;
+  background-position: center center;
+}
+
+@mixin icon-left{
+    position: relative;
+    padding-left: 2.75em;
+    .svg-icon{
+      position: absolute;
+      display: block;
+      width: 1.75em;
+      top: 0;
+      left: 0.5em;
+      height: 100%;
+    }
+}
+@mixin icon-right{
+    position: relative;
+    padding-right: 2.75em;
+    .svg-icon{
+      position: absolute;
+      display: block;
+      width: 1.75em;
+      top: 0;
+      right: 0.5em;
+      height: 100%;
+    }
+}
+
+
+// VARIABLES
+$xs-gutter: rem(20px);
+$sm-gutter: $xs-gutter*1.5;
+$md-gutter: $xs-gutter*2;
+
+/* COLORS */
+$color_primary: #eb5d44;
+$color_secondary: #7783db;
+$color_bg: #EAE8E4;
+$color_bg_light_med: #F5F4F3;
+$color_bg_light: #F9F8F8;
+$color_body: #414142;
+$color_highlight: #35A8E0;
+
+
+$font_heading: 'silver_south_script_altRg', sans-serif;
+$font_body: "Bariol", sans-serif;
+
+
+$header-height-xs: rem(50px);
+$header-height: rem(70px);

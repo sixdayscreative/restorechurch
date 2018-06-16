@@ -1,0 +1,324 @@
+@import './_reset';
+@import './_mixins';
+@import './_grid';
+@import './_type';
+
+html{
+  height: 100%;
+  width: 100%;
+}
+body{
+  background-color: #f1f2f4;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-color: $color_bg;
+}
+
+img{
+  max-width: 100%;
+}
+.card-group{
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5em;
+}
+
+.card{
+  display: block;
+  margin-bottom: 2em;
+  border-radius: rem(6px);
+  border: 3px solid #fff;
+  background-color: #fff;
+  .card-header, .card-footer{
+    padding: 1em;
+    background-color: $color_bg_light;
+    position: relative;
+    .card-title{
+      margin: 0;
+    }
+  }
+  .card-body{
+    padding: 2em;
+  }
+  .card-title{
+    font-size: rem(16px);
+    color: $color_secondary;
+    @include uppercasetitle();
+  }
+  .card-list{
+    li{
+      padding: 0.75em 1em;
+      font-size: rem(20px);
+      position: relative;
+      &:not(:last-child){
+        background: linear-gradient(to right, transparent 50%, #F1D5D5 50%) bottom repeat-x;
+        background-size: 16px 2px;
+        padding-bottom: calc(0.75em + 2px);
+      }
+    }
+  }
+  p:last-child{
+    margin-bottom: 0;
+  }
+}
+
+/* Form Elements */
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: currentColor;
+  opacity: 0.75;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: currentColor;
+  opacity: 0.75;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: currentColor;
+  opacity: 0.75;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: currentColor;
+  opacity: 0.75;
+}
+
+.form-group{
+  margin-bottom: 2em;
+}
+.control-label{
+  margin-bottom: 0.5em;
+  display: block;
+  font-size: rem(18px);
+}
+.form-control{
+  font-family: inherit;
+  font-size: 1em;
+  height: rem(44px);
+  width: 100%;
+  padding: 0.5em;
+  color: currentColor;
+  background-color: rgba(255,255,255,0.3);
+  border-radius: rem(5px);
+  border: 2px solid #D4D4D4;
+  box-shadow: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  @include min-sm {
+    font-size: rem(18px);
+  }
+  &:focus{
+    border-color: $color_primary;
+    outline: 0;
+  }
+}
+textarea.form-control{
+  height: 7em;
+  resize: none;
+}
+.btn{
+  display: inline-block;
+  font-family: inherit;
+  background-color: $color_secondary;
+  color: #fff;
+  border-radius: rem(6px);
+  border: 0;
+  min-width: 10em;
+  font-size: rem(14px);
+  line-height: rem(24px);
+  padding: rem(10px) 1.75em;
+  min-height: rem(44px);
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s ease-out;
+  position: relative;
+  &:hover, &:focus{
+    background-color: darken($color_secondary, 10%);
+  }
+  &:active{
+    background-color: darken($color_secondary, 15%);
+  }
+  @include min-sm{
+    font-size: rem(16px);
+  }
+  @include uppercasetitle;
+  &.block-xs{
+    max-width: rem(380px);
+    margin: 0 auto;
+  }
+  &.btn-block{
+    display: block;
+    width: 100%;
+  }
+  &.btn-lg{
+    @include uppercasetitle;
+    border-radius: rem(38px);
+    min-height: rem(54px);
+    font-size: rem(16px);
+    padding: rem(15px) 2.5rem;
+    color: #fff;
+    @include min-md{
+      font-size: rem(20px);
+      min-height: rem(60px);
+      padding: rem(18px) 2.5rem;
+    }
+  }
+  &.btn-primary{
+    border: 0;
+    background-color: $color_primary;
+    color: #fff;
+    &:hover, &:focus{
+      background-color: darken($color_primary, 10%);
+    }
+    &:active{
+      background-color: darken($color_primary, 15%);
+    }
+  }
+}
+.input-group{
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  align-items: flex-start;
+  max-width: rem(520px);
+  input{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: 0;
+    margin: 0;
+    width: 75%;
+  }
+  input ~ .btn{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    margin: 0;
+    width: 25%;
+    text-transform: none;
+    @include body_spacing;
+    padding-left: 1em;
+    padding-right: 1em;
+    min-width: 5em;
+    white-space: nowrap;
+  }
+}
+form .btn.btn-lg{
+  border-radius: rem(6px);
+}
+
+.bg-dark{
+  color: #fff;
+}
+.gradient-bg{
+  @include gradient;
+}
+
+// HELPERS
+
+.text-center{
+  text-align: center;
+}
+.text-left{
+  text-align: left;
+}
+.text-right{
+  text-align: right;
+}
+
+.mb-1{
+  margin-bottom: 1em;
+}
+
+.pt-1{
+  padding-top: 1em;
+}
+.pt-3{
+  padding-top: 3em;
+}
+.pv-3{
+  padding-top: 3em;
+  padding-bottom: 3em;
+}
+
+@include xs-only{
+  .block-xs{
+    display: block;
+  }
+}
+
+
+.page-enter-active,
+.page-leave-active {
+  transition: opacity .3s ease-out;
+}
+
+.page-enter,
+.page-leave-to {
+  opacity: 0;
+}
+
+
+
+/*RESTORE ANIMATION*/
+$circleSize: 2em;
+$circleStroke: ($circleSize * 0.03);
+$spinSpeed: 2s;
+$cubic-ease: cubic-bezier(0.8,0,0.2,1);
+$iterations: infinite;
+.circle-loader{
+	display: block;
+	height: $circleSize;
+	width: $circleSize;
+	position: relative;
+	margin: ((($circleSize*2) - $circleSize) / 2) auto;
+  animation: rotate infinite ($spinSpeed / 2) linear;
+}
+.circle-loader li{
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	border: $circleStroke solid currentColor;
+	border-radius: 50%;
+	animation: $spinSpeed $iterations alternate linear;
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+}
+
+// collection of positions
+
+$distance : ($circleSize / 3);
+
+$position:(
+    translate(-$distance, 0),
+    translate(($distance / 2), -($distance * 0.866)),
+    translate(($distance / 2), ($distance * .866))
+  );
+
+// loop through petals
+@for $i from 1 to length($position) + 1{
+
+  .circle-loader li:nth-child(#{$i}){
+    // transform: nth($position, $i);
+		transform: scale(1.25);
+    animation-name: circle-#{$i};
+  }
+
+  // animate circle to previous position
+  $j: $i - 1;
+
+  @if $j == 0 { $j: 3; } // loop round array
+	$k: $i - 1;
+
+  // create animation for petal
+  @keyframes circle-#{$i}{ to{ transform: nth($position, $j) scale(0.75); opacity: 0.35 } }
+
+}
+
+@keyframes rotate {
+  0% {transform: rotate(0);}
+  100% {transform: rotate(360deg);}
+}
