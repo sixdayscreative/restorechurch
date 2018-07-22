@@ -20,8 +20,8 @@
       <li v-else v-for="gathering in gatherings">
         <router-link :to="`/gatherings/${gathering.id}`" class="gathering-item">
           <div>
-            <div class="gathering-date">{{gathering.date | moment("dddd Do MMM")}}</div>
-            <strong class="fz-s">{{`${gathering.date} ${gathering.start_time}` | moment("HH:mm")}} - {{`${gathering.date} ${gathering.end_time}` | moment("h:mma")}}</strong>
+            <div class="gathering-date">{{gathering.start_date | moment("dddd Do MMM")}}</div>
+            <strong class="fz-s">{{`${formatDate(gathering.start_date)} ${gathering.start_time}` | moment("HH:mm")}} - {{`${formatDate(gathering.start_date)} ${gathering.end_time}` | moment("h:mma")}}</strong>
           </div>
           <div class="text-right">
             <div class="gathering-title">{{gathering.venue}}</div>
@@ -55,6 +55,11 @@ export default {
   computed: {
     gatherings(){
       return this.$store.state.gatherings
+    }
+  },
+  methods: {
+    formatDate: function(date){
+      return this.$moment(date).format("YYYY-MM-DD")
     }
   }
 }

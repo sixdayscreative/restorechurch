@@ -8,8 +8,8 @@
     <router-link to="/next-gathering">
       <ul class="card-list">
         <li class="gathering-date">
-          <svg class="svg-icon absolute-left"><use xlink:href="#icon-calendar"></use></svg> <span>{{nextGathering.date | moment("dddd Do MMM")}}</span>
-          <strong>{{`${nextGathering.date} ${nextGathering.start_time}` | moment("h:mm")}} - {{`${nextGathering.date} ${nextGathering.end_time}` | moment("h:mma")}}</strong>
+          <svg class="svg-icon absolute-left"><use xlink:href="#icon-calendar"></use></svg> <span>{{nextGathering.start_date | moment("dddd Do MMM")}}</span>
+          <strong>{{`${gatheringDate} ${nextGathering.start_time}` | moment("h:mm")}} - {{`${gatheringDate} ${nextGathering.end_time}` | moment("h:mma")}}</strong>
         </li>
         <li class="gathering-location">
           <svg class="svg-icon absolute-left"><use xlink:href="#icon-location"></use></svg> {{nextGathering.venue}}
@@ -38,6 +38,10 @@
     computed: {
       nextGathering(){
         return this.$store.state.gatherings[0]
+      },
+      gatheringDate(){
+        const date = this.nextGathering.start_date
+        return this.$moment(date).format("YYYY-MM-DD")
       }
     }
   }

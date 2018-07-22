@@ -1,5 +1,5 @@
 <template lang="html">
-  <section class="main single-gathering" v-if="singleGathering.date">
+  <section class="main single-gathering" v-if="singleGathering.start_date">
     <div class="container">
 <div class="card single-gathering-card">
   <div class="">
@@ -12,7 +12,7 @@
               <svg viewBox="0 0 110.467 30"><use xlink:href="#logo"></use></svg> Church
             </div>
 
-            <p class="lead"><span class="fz-xl">{{singleGathering.date | moment("dddd Do MMMM YYYY")}}</span></p>
+            <p class="lead"><span class="fz-xl">{{singleGathering.start_date | moment("dddd Do MMMM YYYY")}}</span></p>
           </div>
           <div class="text-center">
             <a :href="gcalLink" target="_blank" class="btn">Add to google calendar</a>
@@ -102,8 +102,8 @@ export default {
     gcalLink(){
 
       var data = {
-        start_date: this.$moment( `${this.singleGathering.date}T${this.singleGathering.start_time}`).utc().format("YYYYMMDD[T]HHmmss[Z]"),
-        end_date: this.$moment( `${this.singleGathering.date}T${this.singleGathering.end_time}`).utc().format("YYYYMMDD[T]HHmmss[Z]"),
+        start_date: this.$moment( `${this.singleGathering.start_date}T${this.singleGathering.start_time}`).utc().format("YYYYMMDD[T]HHmmss[Z]"),
+        end_date: this.$moment( `${this.singleGathering.start_date}T${this.singleGathering.end_time}`).utc().format("YYYYMMDD[T]HHmmss[Z]"),
         location: encodeURI(`${this.singleGathering.venue}, ${this.singleGathering.venue_address.city} ${this.singleGathering.venue_address.venue_postcode}`)
       }
       var calendarLink = `https://calendar.google.com/calendar/r/eventedit?text=Restore+Gathering&dates=${data.start_date}/${data.end_date}&details=For+gathering+details,+link+here:+https://church.restoreproject.co.uk/gatherings/${this.singleGathering.id}&location=${data.location}`
@@ -111,7 +111,7 @@ export default {
       return calendarLink;
     },
     gatheringDate() {
-      return this.$moment(`${this.singleGathering.date}`).format("dddd Do MMMM");
+      return this.$moment(`${this.singleGathering.start_date}`).format("dddd Do MMMM");
     }
   }
 }

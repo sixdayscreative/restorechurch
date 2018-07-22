@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+// import user from './modules/user'
+// import auth from './modules/auth'
 
 Vue.use(Vuex);
 
@@ -12,6 +14,10 @@ export const store = new Vuex.Store({
     gatherings: [],
     loading: true
   },
+  // modules: {
+  //   user,
+  //   auth,
+  // },
   actions: {
     fetchGatherings ({commit}) {
       axios.get(`${URL}/upcoming_gatherings/v2/gatherings`)

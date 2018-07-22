@@ -13,6 +13,6 @@ export default [
   {path: '/next-gathering', component: singlegathering},
   {path: '/contact', component: contact},
   {path: '*', component: notfound},
-  //{path: '/register', component: register},
-  //{path: '/login', component: login}
+  // {path: '/register', component: register},
+  // {path: '/login', component: login}
 ]
