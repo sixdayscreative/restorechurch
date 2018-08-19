@@ -9,6 +9,7 @@ import {store} from '@/store/store'
 import VueMoment from 'vue-moment'
 import moment from 'moment-timezone'
 import SocialSharing from 'vue-social-sharing'
+import VueAnalytics from 'vue-analytics'
 
 Vue.use(VueRouter);
 Vue.use(vueScrollto);
@@ -40,6 +41,11 @@ Vue.directive('scroll', {
     }
     window.addEventListener('scroll', f)
   }
+})
+
+Vue.use(VueAnalytics, {
+  id: 'UA-124232249-1',
+  router
 })
 
 Vue.use(VueMq, {
